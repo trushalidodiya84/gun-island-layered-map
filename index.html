@@ -35,6 +35,22 @@ L.tileLayer(
 var placeLayer = L.layerGroup().addTo(map);
 var humanRouteLayer = L.layerGroup().addTo(map);
 var animalRouteLayer = L.layerGroup().addTo(map);
+L.polyline(
+  [
+    [40.6782, -73.9442], // Brooklyn
+    [22.5726, 88.3639]   // Kolkata
+  ],
+  {
+    color: "gray",
+    weight: 2,
+    opacity: 0.6,
+    dashArray: "3, 6"
+  }
+).addTo(humanRouteLayer)
+.bindPopup(
+  "<b>Climate-based seasonal movement (subplot)</b><br>" +
+  "Dinanath Dutta’s regular winter migration from Brooklyn to Kolkata."
+);
 
 // Base map layer
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
