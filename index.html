@@ -22,11 +22,11 @@
 // Create map
 var map = L.map('map').setView([25, 50], 4);
 
-// Base map — English labels (FINAL & COMPLETE)
+// Base map — NO labels (clean academic map)
 L.tileLayer(
-  'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png',
+  'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',
   {
-    attribution: '© OpenStreetMap contributors © Stadia Maps'
+    attribution: '© OpenStreetMap © CARTO'
   }
 ).addTo(map);
 
