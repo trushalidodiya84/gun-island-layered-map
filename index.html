@@ -21,6 +21,10 @@
 
 // Create map
 var map = L.map('map').setView([25, 50], 4);
+// Layers
+var placeLayer = L.layerGroup().addTo(map);
+var humanRouteLayer = L.layerGroup().addTo(map);
+var animalRouteLayer = L.layerGroup().addTo(map);
 
 // Base map layer
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
