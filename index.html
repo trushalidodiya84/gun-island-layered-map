@@ -21,13 +21,12 @@
 
 // Create map
 var map = L.map('map').setView([25, 50], 4);
- L.tileLayer(
+L.tileLayer(
   'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png',
   {
     attribution: '© OpenStreetMap contributors © Stadia Maps'
   }
 ).addTo(map);
-
 
 // Layers
 var placeLayer = L.layerGroup().addTo(map);
