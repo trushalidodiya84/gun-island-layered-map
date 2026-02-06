@@ -21,10 +21,13 @@
 
 // Create map
 var map = L.map('map').setView([25, 50], 4);
-  // Base map with English labels
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-  attribution: '© OpenStreetMap © CARTO'
-}).addTo(map);
+ L.tileLayer(
+  'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png',
+  {
+    attribution: '© OpenStreetMap contributors © Stadia Maps'
+  }
+).addTo(map);
+
 
 // Layers
 var placeLayer = L.layerGroup().addTo(map);
