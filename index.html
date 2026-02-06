@@ -21,6 +21,8 @@
 
 // Create map
 var map = L.map('map').setView([25, 50], 4);
+
+// Base map — English labels (FINAL & COMPLETE)
 L.tileLayer(
   'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png',
   {
@@ -28,6 +30,7 @@ L.tileLayer(
   }
 ).addTo(map);
 
+ 
 // Layers
 var placeLayer = L.layerGroup().addTo(map);
 var humanRouteLayer = L.layerGroup().addTo(map);
