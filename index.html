@@ -52,9 +52,13 @@ L.polyline(
   "Dinanath Dutta’s regular winter migration from Brooklyn to Kolkata."
 );
 
-// Base map layer
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
-.addTo(map);
+L.tileLayer(
+  'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',
+  {
+    attribution: '© OpenStreetMap © CARTO'
+  }
+).addTo(map);
+
 // Place marker: Sundarbans
 L.marker([21.9497, 89.1833]).addTo(placeLayer)
 .bindPopup("<b>Sundarbans</b><br>Climate-vulnerable delta where human and non-human migration begins.");
