@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Gun Island – Layered Map</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<style>
+  #map { height: 90vh; }
+</style>
+</head>
+
+<body>
+
+<h3>Gun Island – Base Map</h3>
+<div id="map"></div>
+
+<script>
+
+// Create map
+var map = L.map('map').setView([25, 50], 4);
+
+// Base map layer
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
+.addTo(map);
+
+</script>
+
+</body>
+</html>
