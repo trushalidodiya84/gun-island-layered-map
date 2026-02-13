@@ -56,19 +56,44 @@ L.polygon([
 }).addTo(placeLayer)
 .bindPopup("<b>Sundarbans Ecological Zone</b><br>Repeated cyclones (e.g., Aila 2009) trigger evacuation, livelihood loss and long-term migration.");
   
-// ONE continuous trafficking route
-L.polyline([
-    [21.80, 89.00],      // Sundarbans
-    [23.8103, 90.4125],  // Bangladesh
-    [25.2048, 55.2708],  // Gulf
-    [3.1390, 101.6869],  // Malaysia
-    [-6.2088, 106.8456]  // Indonesia
-], {
+var routeStyle = {
     color: "red",
-    weight: 3
-})
+    weight: 3,
+    lineCap: "round",
+    lineJoin: "round"
+};
+
+/// STEP 1: Sundarbans → Bangladesh
+L.polyline([
+    [21.80, 89.00],
+    [23.8103, 90.4125]
+], routeStyle)
 .addTo(humanRouteLayer)
-.bindPopup("<b>Human Trafficking Corridor</b><br>Climate displacement from Sundarbans leads to cross-border movement to Bangladesh, then labour migration to the Gulf and further smuggling towards Southeast Asia.");
+.bindPopup("<b>Ecological Displacement</b><br>Cyclones and erosion in the Sundarbans push vulnerable populations across nearby borders.");
+
+/// STEP 2: Bangladesh → Gulf
+L.polyline([
+    [23.8103, 90.4125],
+    [25.2048, 55.2708]
+], routeStyle)
+.addTo(humanRouteLayer)
+.bindPopup("<b>Labour Migration Network</b><br>Traffickers channel migrants into Gulf labour markets promising economic survival.");
+
+/// STEP 3: Gulf → Malaysia
+L.polyline([
+    [25.2048, 55.2708],
+    [3.1390, 101.6869]
+], routeStyle)
+.addTo(humanRouteLayer)
+.bindPopup("<b>Debt-Driven Mobility</b><br>When migrants cannot repay brokers, they are rerouted through clandestine Southeast Asian routes.");
+
+/// STEP 4: Malaysia → Indonesia
+L.polyline([
+    [3.1390, 101.6869],
+    [-6.2088, 106.8456]
+], routeStyle)
+.addTo(humanRouteLayer)
+.bindPopup("<b>Forced Secondary Migration</b><br>Failed contracts lead to further smuggling across maritime borders.");
 
 
 L.polyline(
