@@ -36,28 +36,27 @@ var placeLayer = L.layerGroup().addTo(map);
 var humanRouteLayer = L.layerGroup().addTo(map);
 var animalRouteLayer = L.layerGroup().addTo(map);
   
-  // Trafficking route markers
+// Trafficking route markers
 
 // Sundarbans origin
-L.marker([21.80, 89.00]).addTo(humanroutelayerS)
+L.marker([21.80, 89.00]).addTo(humanRouteLayer)
 .bindPopup("<b>Sundarbans</b><br>Climate-affected origin of trafficking migration.");
 
 // Bangladesh transit
-L.marker([23.8103, 90.4125]).addTo(humanroutelayer)
+L.marker([23.8103, 90.4125]).addTo(humanRouteLayer)
 .bindPopup("<b>Bangladesh Transit</b><br>First cross-border movement point in trafficking network.");
 
 // Gulf destination
-L.marker([25.2048, 55.2708]).addTo(humanroutelayer)
+L.marker([25.2048, 55.2708]).addTo(humanRouteLayer)
 .bindPopup("<b>Gulf Region</b><br>Labour destination for trafficked migrants.");
 
 // Malaysia
-L.marker([3.1390, 101.6869]).addTo(humanroutelayer)
+L.marker([3.1390, 101.6869]).addTo(humanRouteLayer)
 .bindPopup("<b>Malaysia</b><br>Secondary trafficking destination if debts unpaid.");
 
 // Indonesia
-L.marker([-6.2088, 106.8456]).addTo(humanroutelayer)
+L.marker([-6.2088, 106.8456]).addTo(humanRouteLayer)
 .bindPopup("<b>Indonesia</b><br>Alternative smuggling destination in Southeast Asia.");
-
 
 L.polyline(
   [
