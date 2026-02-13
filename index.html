@@ -35,6 +35,26 @@ L.tileLayer(
 var placeLayer = L.layerGroup().addTo(map);
 var humanRouteLayer = L.layerGroup().addTo(map);
 var animalRouteLayer = L.layerGroup().addTo(map);
+
+  // Sundarbans Ecocritical Zone (Cyclone-prone delta)
+L.polygon([
+  [22.20, 88.60],
+  [22.10, 89.20],
+  [21.90, 89.60],
+  [21.60, 89.40],
+  [21.50, 88.90],
+  [21.70, 88.50]
+], {
+  color: "darkgreen",
+  weight: 2,
+  fillColor: "green",
+  fillOpacity: 0.35
+}).addTo(placeLayer)
+.bindPopup(
+  "<b>Sundarbans Ecological Zone</b><br>" +
+  "Cyclone-prone deltaic region representing climate vulnerability and ecological instability in <i>Gun Island</i>."
+);
+
 L.polyline(
   [
     [40.6782, -73.9442], // Brooklyn
