@@ -110,6 +110,7 @@ L.tileLayer(
 // Place marker: Sundarbans
 L.marker([21.9497, 89.1833]).addTo(placeLayer)
 .bindPopup("<b>Sundarbans</b><br>Climate-vulnerable delta where human and non-human migration begins.");
+map.fitBounds(humanRouteLayer.getBounds());
 
 </script>
 
