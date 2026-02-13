@@ -131,6 +131,26 @@ L.polyline([
 "A natural boundary dividing India and Bangladesh. " +
 "In <i>Gun Island</i>, the river functions as a porous frontier enabling informal crossings and trafficking mobility."
 );
+/* ================= MAIN HUMAN TRAFFICKING ROUTE ================= */
+
+var traffickingPath = [
+    [21.80, 89.00],      // Sundarbans
+    [23.8103, 90.4125],  // Bangladesh
+    [25.2048, 55.2708],  // Gulf
+    [3.1390, 101.6869],  // Malaysia
+    [-6.2088, 106.8456]  // Indonesia
+];
+
+L.polyline(traffickingPath, {
+    color: "red",
+    weight: 4,
+    opacity: 0.95
+})
+.addTo(humanRouteLayer)
+.bindPopup(
+"<b>Human Trafficking Route</b><br>" +
+"Ecological displacement in the Sundarbans evolves into organised labour trafficking across South Asia, the Gulf economy and Southeast Asian maritime routes."
+);
 
 // zoom to route
 setTimeout(function(){
