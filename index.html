@@ -151,6 +151,159 @@ L.polyline(traffickingPath, {
 "<b>Human Trafficking Route</b><br>" +
 "Ecological displacement in the Sundarbans evolves into organised labour trafficking across South Asia, the Gulf economy and Southeast Asian maritime routes."
 );
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Gun Island – Layered Map</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<style>
+  #map { height: 90vh; }
+</style>
+</head>
+
+<body>
+
+<h3>Gun Island – Base Map</h3>
+<div id="map"></div>
+
+<script>
+
+// Create map (ONLY ONCE)
+var map = L.map('map').setView([25, 50], 4);
+
+// Base map — NO labels
+L.tileLayer(
+  'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',
+  { attribution: '© OpenStreetMap © CARTO' }
+).addTo(map);
+
+// marker pane on top
+map.createPane('markerPaneTop');
+map.getPane('markerPaneTop').style.zIndex = 650;
+
+// Layers
+var placeLayer = L.layerGroup().addTo(map);
+var humanRouteLayer = L.featureGroup().addTo(map);
+var animalRouteLayer = L.layerGroup().addTo(map);
+
+// Sundarbans zone
+L.polygon([
+    [22.40, 88.10],
+    [22.35, 89.10],
+    [21.70, 89.60],
+    [21.30, 89.20],
+    [21.40, 88.20]
+], {
+    color: "green",
+    fillColor: "green",
+    fillOpacity: 0.25,
+    weight: 2
+}).addTo(placeLayer)
+.bindPopup("<b>Sundarbans Ecological Zone</b><br>Repeated cyclones trigger migration.");
+
+// Sundarbans origin
+L.marker([21.80,89.00],{pane:'markerPaneTop'}).addTo(humanRouteLayer)
+.bindPopup(
+"<b>Sundarbans: Ecological Precarity</b><br>" +
+"Repeated cyclones, saline intrusion and erosion destroy livelihoods. " +
+"Environmental instability produces vulnerable populations who become targets of trafficking networks."
+);
+
+// Bangladesh transit
+L.marker([23.8103,90.4125],{pane:'markerPaneTop'}).addTo(humanRouteLayer)
+.bindPopup(
+"<b>Bangladesh Transit Zone</b><br>" +
+"Nearby borders enable informal crossing. Migration shifts from displacement to organised movement through brokers and middlemen."
+);
+
+// Gulf destination
+L.marker([25.2048,55.2708],{pane:'markerPaneTop'}).addTo(humanRouteLayer)
+.bindPopup(
+"<b>Gulf Labour Circuits</b><br>" +
+"Migrants enter exploitative labour markets. Promised economic mobility turns into contractual dependency and debt."
+);
+
+// Malaysia
+L.marker([3.1390,101.6869],{pane:'markerPaneTop'}).addTo(humanRouteLayer)
+.bindPopup(
+"<b>Debt-Driven Mobility</b><br>" +
+"When repayment fails, migrants are rerouted into clandestine Southeast Asian routes controlled by trafficking networks."
+);
+
+// Indonesia
+L.marker([-6.2088,106.8456],{pane:'markerPaneTop'}).addTo(humanRouteLayer)
+.bindPopup(
+"<b>Secondary Smuggling Destination</b><br>" +
+"Movement becomes cyclical displacement rather than settlement, illustrating precarious existence within globalised migration systems."
+);
+// subplot route
+L.polyline([[40.6782,-73.9442],[22.5726,88.3639]], {
+  color:"gray", weight:2, opacity:0.6, dashArray:"3,6"
+}).addTo(humanRouteLayer);
+
+// Raimangal River
+L.polyline([
+    [22.10, 89.05],
+    [22.00, 89.10],
+    [21.95, 89.15],
+    [21.90, 89.20],
+    [21.85, 89.25],
+    [21.80, 89.30]
+], {
+    color: "blue",
+    weight: 3,
+    opacity: 0.8,
+    dashArray: "8,6"
+}).addTo(placeLayer);
+
+// subplot route
+L.polyline([[40.6782,-73.9442],[22.5726,88.3639]], {
+  color:"gray", weight:2, opacity:0.6, dashArray:"3,6"
+}).addTo(humanRouteLayer);
+
+// Raimangal River (India–Bangladesh border)
+L.polyline([
+    [22.10, 89.05],
+    [22.00, 89.10],
+    [21.95, 89.15],
+    [21.90, 89.20],
+    [21.85, 89.25],
+    [21.80, 89.30]
+], {
+    color: "blue",
+    weight: 3,
+    opacity: 0.8,
+    dashArray: "8,6"
+}).addTo(placeLayer)
+.bindPopup(
+"<b>Raimangal River Border</b><br>" +
+"A natural boundary dividing India and Bangladesh. " +
+"In <i>Gun Island</i>, the river functions as a porous frontier enabling informal crossings and trafficking mobility."
+);
+/* ================= MAIN HUMAN TRAFFICKING ROUTE ================= */
+
+var traffickingPath = [
+    [21.80, 89.00],      // Sundarbans
+    [23.8103, 90.4125],  // Bangladesh
+    [25.2048, 55.2708],  // Gulf
+    [3.1390, 101.6869],  // Malaysia
+    [-6.2088, 106.8456]  // Indonesia
+];
+
+L.polyline(traffickingPath, {
+    color: "red",
+    weight: 4,
+    opacity: 0.95
+})
+.addTo(humanRouteLayer)
+.bindPopup(
+"<b>Human Trafficking Route</b><br>" +
+"Ecological displacement in the Sundarbans evolves into organised labour trafficking across South Asia, the Gulf economy and Southeast Asian maritime routes."
+);
 
 .bindPopup(
 "<b>The Gun Merchant: A Reconstructed Historical Migration</b><br><br>" +
@@ -228,6 +381,35 @@ L.marker([45.44, 12.33],{pane:'markerPaneTop'}).addTo(humanRouteLayer)
 "Final settlement; linguistic origin of the name ‘Bonduki Sadagar’. Migration ends but exile remains permanent."
 );
 console.log("SCRIPT END REACHED");
+gunMerchantRoute.bindPopup(
+"<b>The Gun Merchant’s Journey</b><br><br>" +
+"Cinta decodes the legend as a historical migration. " +
+"Climate disaster in Bengal forces departure → pirates carry captives to Goa → the merchant joins maritime trade → travels to Egypt → Ottoman lands → finally Venice (Al-Banduqeyya). " +
+"The story reveals migration as a repeating historical pattern shaped by environment and empire."
+);
+/* Gun Merchant decoded places */
+
+gunMerchantPath.forEach(function(coord){
+    L.circleMarker(coord,{
+        radius:6,
+        color:"purple",
+        fillColor:"white",
+        fillOpacity:1,
+        pane:'markerPaneTop'
+    }).addTo(humanRouteLayer);
+});
+
+
+// zoom to route
+setTimeout(function(){
+    map.fitBounds(humanRouteLayer.getBounds());
+},500);
+
+</script>
+
+
+</body>
+</html>
 
 
 // zoom to route
