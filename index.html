@@ -81,6 +81,27 @@ L.polyline([[40.6782,-73.9442],[22.5726,88.3639]], {
 // place marker
 L.marker([21.9497,89.1833],{pane:'markerPaneTop'}).addTo(placeLayer)
 .bindPopup("<b>Sundarbans</b>");
+// Route stop markers (same layer as route)
+
+// Sundarbans origin
+L.marker([21.80,89.00],{pane:'markerPaneTop'}).addTo(humanRouteLayer)
+.bindPopup("<b>Sundarbans</b><br>Climate-affected origin");
+
+// Bangladesh transit
+L.marker([23.8103,90.4125],{pane:'markerPaneTop'}).addTo(humanRouteLayer)
+.bindPopup("<b>Bangladesh</b><br>Cross-border movement");
+
+// Gulf labour destination
+L.marker([25.2048,55.2708],{pane:'markerPaneTop'}).addTo(humanRouteLayer)
+.bindPopup("<b>Gulf Region</b><br>Labour migration");
+
+// Malaysia
+L.marker([3.1390,101.6869],{pane:'markerPaneTop'}).addTo(humanRouteLayer)
+.bindPopup("<b>Malaysia</b><br>Debt-driven movement");
+
+// Indonesia
+L.marker([-6.2088,106.8456],{pane:'markerPaneTop'}).addTo(humanRouteLayer)
+.bindPopup("<b>Indonesia</b><br>Secondary smuggling destination");
 
 // zoom to route
 setTimeout(function(){
