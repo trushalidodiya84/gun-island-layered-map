@@ -36,27 +36,38 @@ var placeLayer = L.layerGroup().addTo(map);
 var humanRouteLayer = L.layerGroup().addTo(map);
 var animalRouteLayer = L.layerGroup().addTo(map);
   
-// Trafficking route markers
+/// STEP 1: Sundarbans → Bangladesh
+L.polyline([
+    [21.80, 89.00],
+    [23.8103, 90.4125]
+], {color:"red", weight:3})
+.addTo(humanRouteLayer)
+.bindPopup("<b>Ecological Displacement</b><br>Cyclones and erosion in the Sundarbans push vulnerable populations across nearby borders.");
 
-// Sundarbans origin
-L.marker([21.80, 89.00]).addTo(humanRouteLayer)
-.bindPopup("<b>Sundarbans</b><br>Climate-affected origin of trafficking migration.");
+// STEP 2: Bangladesh → Gulf
+L.polyline([
+    [23.8103, 90.4125],
+    [25.2048, 55.2708]
+], {color:"red", weight:3})
+.addTo(humanRouteLayer)
+.bindPopup("<b>Labour Migration Network</b><br>Traffickers channel migrants into Gulf labour markets promising economic survival.");
 
-// Bangladesh transit
-L.marker([23.8103, 90.4125]).addTo(humanRouteLayer)
-.bindPopup("<b>Bangladesh Transit</b><br>First cross-border movement point in trafficking network.");
+// STEP 3: Gulf → Malaysia
+L.polyline([
+    [25.2048, 55.2708],
+    [3.1390, 101.6869]
+], {color:"red", weight:3})
+.addTo(humanRouteLayer)
+.bindPopup("<b>Debt-Driven Mobility</b><br>When migrants cannot repay brokers, they are rerouted through clandestine Southeast Asian routes.");
 
-// Gulf destination
-L.marker([25.2048, 55.2708]).addTo(humanRouteLayer)
-.bindPopup("<b>Gulf Region</b><br>Labour destination for trafficked migrants.");
+// STEP 4: Malaysia → Indonesia
+L.polyline([
+    [3.1390, 101.6869],
+    [-6.2088, 106.8456]
+], {color:"red", weight:3})
+.addTo(humanRouteLayer)
+.bindPopup("<b>Forced Secondary Migration</b><br>Failed contracts lead to further smuggling across maritime borders.");
 
-// Malaysia
-L.marker([3.1390, 101.6869]).addTo(humanRouteLayer)
-.bindPopup("<b>Malaysia</b><br>Secondary trafficking destination if debts unpaid.");
-
-// Indonesia
-L.marker([-6.2088, 106.8456]).addTo(humanRouteLayer)
-.bindPopup("<b>Indonesia</b><br>Alternative smuggling destination in Southeast Asia.");
 
 L.polyline(
   [
