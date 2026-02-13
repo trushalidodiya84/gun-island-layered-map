@@ -305,6 +305,70 @@ L.polyline(traffickingPath, {
 "Ecological displacement in the Sundarbans evolves into organised labour trafficking across South Asia, the Gulf economy and Southeast Asian maritime routes."
 );
 
+  /* ================= GUN MERCHANT COMPLETE LAYER ================= */
+
+// route coordinates
+var gunMerchantPath = [
+    [21.80, 89.00],   // Bengal
+    [15.50, 73.80],   // Goa
+    [3.20, 73.22],    // Maldives
+    [30.04, 31.23],   // Egypt
+    [41.00, 28.97],   // Istanbul
+    [45.44, 12.33]    // Venice
+];
+
+// route line
+var gunMerchantRoute = L.polyline(gunMerchantPath,{
+    color:"purple",
+    weight:4,
+    dashArray:"8,6",
+    opacity:0.95
+}).addTo(humanRouteLayer);
+
+// long interpretation popup
+gunMerchantRoute.bindPopup(
+"<b>Cinta’s Reconstruction of the Gun Merchant’s Journey</b><br><br>" +
+
+"<b>Bonduki Sadagar:</b> Not a gun seller. Derived from Arabic <i>al-Banduqiyya</i> meaning Venice — the merchant who travelled to Venice.<br><br>" +
+
+"<b>Climate Displacement:</b> A Bengali merchant loses everything due to Little Ice Age floods and drought and is forced to leave by sea.<br><br>" +
+
+"<b>Goa – Turning Point:</b> Captured by Portuguese pirates in the Bay of Bengal and sold in Goa. Freed by Nakhuda Ilyas, a Jewish trader fleeing the Inquisition. They become trading partners.<br><br>" +
+
+"<b>Maldives:</b> Trade in cowrie shells, a major global currency.<br><br>" +
+
+"<b>Tal-Mishri Desh (Egypt):</b> Entry to Mediterranean commerce.<br><br>" +
+
+"<b>Rumali Desh (Istanbul):</b> Fire, famine and political unrest force migration again.<br><br>" +
+
+"<b>Banduqiyya (Venice):</b> Final settlement — proving the legend preserves memory of early modern migration rather than divine punishment.<br><br>" +
+
+"<b>Meaning:</b> The Gun Merchant is an early climate refugee whose journey records trade, slavery and empire across the Indian Ocean world."
+);
+
+
+// place markers
+var gunPlaces = [
+ ["Bengal – Climate loss origin",[21.80,89.00]],
+ ["Goa – Portuguese slave market",[15.50,73.80]],
+ ["Maldives – Cowrie trade",[3.20,73.22]],
+ ["Egypt (Tal-Mishri Desh)",[30.04,31.23]],
+ ["Istanbul (Rumali Desh)",[41.00,28.97]],
+ ["Venice (Banduqiyya)",[45.44,12.33]]
+];
+
+gunPlaces.forEach(function(p){
+    L.circleMarker(p[1],{
+        radius:6,
+        color:"purple",
+        fillColor:"white",
+        fillOpacity:1,
+        pane:'markerPaneTop'
+    }).addTo(humanRouteLayer)
+      .bindPopup("<b>"+p[0]+"</b>");
+});
+
+  
 // zoom to route
 setTimeout(function(){
     map.fitBounds(humanRouteLayer.getBounds());
