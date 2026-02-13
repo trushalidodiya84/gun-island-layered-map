@@ -36,24 +36,19 @@ var placeLayer = L.layerGroup().addTo(map);
 var humanRouteLayer = L.layerGroup().addTo(map);
 var animalRouteLayer = L.layerGroup().addTo(map);
 
-  // Sundarbans Ecocritical Zone (Cyclone-prone delta)
-L.polygon([
-  [22.20, 88.60],
-  [22.10, 89.20],
-  [21.90, 89.60],
-  [21.60, 89.40],
-  [21.50, 88.90],
-  [21.70, 88.50]
-], {
-  color: "darkgreen",
-  weight: 2,
-  fillColor: "green",
-  fillOpacity: 0.35
-}).addTo(placeLayer)
 .bindPopup(
-  "<b>Sundarbans Ecological Zone</b><br>" +
-  "Cyclone-prone deltaic region representing climate vulnerability and ecological instability in <i>Gun Island</i>."
+  "<b>Sundarbans Ecocritical Zone</b><br><br>" +
+
+  "<b>Environmental trigger:</b><br>" +
+  "Cyclone Aila (2009) caused mass evacuations, embankment collapse and salinisation of land, rendering settlements uninhabitable.<br><br>" +
+
+  "<b>Human consequence:</b><br>" +
+  "Economic precarity leads to migration and trafficking networks. Young people leave for Bangladesh and Gulf countries; failure to repay traffickers results in smuggling toward Malaysia and Indonesia.<br><br>" +
+
+  "<b>Narrative reference:</b><br>" +
+  "Tipu, Moyna’s son, becomes entangled in trafficking circuits, illustrating climate-induced vulnerability in <i>Gun Island</i>."
 );
+
 
 L.polyline(
   [
