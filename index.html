@@ -87,6 +87,25 @@ L.marker([-6.2088,106.8456],{pane:'markerPaneTop'}).addTo(humanRouteLayer)
 "<b>Secondary Smuggling Destination</b><br>" +
 "Movement becomes cyclical displacement rather than settlement, illustrating precarious existence within globalised migration systems."
 );
+// subplot route
+L.polyline([[40.6782,-73.9442],[22.5726,88.3639]], {
+  color:"gray", weight:2, opacity:0.6, dashArray:"3,6"
+}).addTo(humanRouteLayer);
+
+// Raimangal River
+L.polyline([
+    [22.10, 89.05],
+    [22.00, 89.10],
+    [21.95, 89.15],
+    [21.90, 89.20],
+    [21.85, 89.25],
+    [21.80, 89.30]
+], {
+    color: "blue",
+    weight: 3,
+    opacity: 0.8,
+    dashArray: "8,6"
+}).addTo(placeLayer);
 
 // subplot route
 L.polyline([[40.6782,-73.9442],[22.5726,88.3639]], {
