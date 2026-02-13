@@ -36,18 +36,26 @@ var placeLayer = L.layerGroup().addTo(map);
 var humanRouteLayer = L.layerGroup().addTo(map);
 var animalRouteLayer = L.layerGroup().addTo(map);
 
+  // Major human trafficking migration route
+L.polyline(
+  [
+    [21.80, 89.00],   // Sundarbans
+    [23.8103, 90.4125], // Bangladesh (Dhaka transit)
+    [25.2048, 55.2708], // Gulf (Dubai region)
+    [3.1390, 101.6869], // Malaysia (Kuala Lumpur)
+    [-6.2088, 106.8456] // Indonesia (Jakarta)
+  ],
+  {
+    color: "red",
+    weight: 4,
+    opacity: 0.9
+  }
+).addTo(humanRouteLayer)
 .bindPopup(
-  "<b>Sundarbans Ecocritical Zone</b><br><br>" +
-
-  "<b>Environmental trigger:</b><br>" +
-  "Cyclone Aila (2009) caused mass evacuations, embankment collapse and salinisation of land, rendering settlements uninhabitable.<br><br>" +
-
-  "<b>Human consequence:</b><br>" +
-  "Economic precarity leads to migration and trafficking networks. Young people leave for Bangladesh and Gulf countries; failure to repay traffickers results in smuggling toward Malaysia and Indonesia.<br><br>" +
-
-  "<b>Narrative reference:</b><br>" +
-  "Tipu, Moyna’s son, becomes entangled in trafficking circuits, illustrating climate-induced vulnerability in <i>Gun Island</i>."
+  "<b>Trafficking Migration Corridor</b><br>" +
+  "Climate displacement from the Sundarbans feeds trafficking routes through Bangladesh to the Gulf and Southeast Asia in <i>Gun Island</i>."
 );
+
 
 
 L.polyline(
