@@ -29,6 +29,11 @@ L.tileLayer(
     attribution: '© OpenStreetMap © CARTO'
   }
 ).addTo(map);
+var map = L.map('map').setView([25, 50], 4);
+
+// make markers appear above everything
+map.createPane('markerPaneTop');
+map.getPane('markerPaneTop').style.zIndex = 650;
 
  
 // Layers
@@ -110,7 +115,8 @@ L.tileLayer(
 // Place marker: Sundarbans
 L.marker([21.9497, 89.1833]).addTo(placeLayer)
 .bindPopup("<b>Sundarbans</b><br>Climate-vulnerable delta where human and non-human migration begins.");
-map.fitBounds(humanRouteLayer.getBounds());
+
+  
 setTimeout(function () {
     map.fitBounds(humanRouteLayer.getBounds());
 }, 500);
