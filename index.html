@@ -19,29 +19,25 @@
 
 <script>
 
-// Create map
+// Create map (ONLY ONCE)
 var map = L.map('map').setView([25, 50], 4);
 
-// Base map — NO labels (clean academic map)
+// Base map — NO labels
 L.tileLayer(
   'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',
-  {
-    attribution: '© OpenStreetMap © CARTO'
-  }
+  { attribution: '© OpenStreetMap © CARTO' }
 ).addTo(map);
-var map = L.map('map').setView([25, 50], 4);
 
-// make markers appear above everything
+// marker pane on top
 map.createPane('markerPaneTop');
 map.getPane('markerPaneTop').style.zIndex = 650;
 
- 
 // Layers
 var placeLayer = L.layerGroup().addTo(map);
 var humanRouteLayer = L.featureGroup().addTo(map);
 var animalRouteLayer = L.layerGroup().addTo(map);
 
-  // Sundarbans Ecological Zone (Cyclone & Erosion Region)
+// Sundarbans zone
 L.polygon([
     [22.40, 88.10],
     [22.35, 89.10],
@@ -54,8 +50,9 @@ L.polygon([
     fillOpacity: 0.25,
     weight: 2
 }).addTo(placeLayer)
-.bindPopup("<b>Sundarbans Ecological Zone</b><br>Repeated cyclones (e.g., Aila 2009) trigger evacuation, livelihood loss and long-term migration.");
-  
+.bindPopup("<b>Sundarbans Ecological Zone</b><br>Repeated cyclones trigger migration.");
+
+// Route style
 var routeStyle = {
     color: "red",
     weight: 3,
@@ -63,73 +60,35 @@ var routeStyle = {
     lineJoin: "round"
 };
 
-/// STEP 1: Sundarbans → Bangladesh
-L.polyline([
-    [21.80, 89.00],
-    [23.8103, 90.4125]
-], routeStyle)
-.addTo(humanRouteLayer)
-.bindPopup("<b>Ecological Displacement</b><br>Cyclones and erosion in the Sundarbans push vulnerable populations across nearby borders.");
+// Trafficking route steps
+L.polyline([[21.80,89.00],[23.8103,90.4125]], routeStyle).addTo(humanRouteLayer)
+.bindPopup("<b>Ecological Displacement</b>");
 
-/// STEP 2: Bangladesh → Gulf
-L.polyline([
-    [23.8103, 90.4125],
-    [25.2048, 55.2708]
-], routeStyle)
-.addTo(humanRouteLayer)
-.bindPopup("<b>Labour Migration Network</b><br>Traffickers channel migrants into Gulf labour markets promising economic survival.");
+L.polyline([[23.8103,90.4125],[25.2048,55.2708]], routeStyle).addTo(humanRouteLayer)
+.bindPopup("<b>Labour Migration Network</b>");
 
-/// STEP 3: Gulf → Malaysia
-L.polyline([
-    [25.2048, 55.2708],
-    [3.1390, 101.6869]
-], routeStyle)
-.addTo(humanRouteLayer)
-.bindPopup("<b>Debt-Driven Mobility</b><br>When migrants cannot repay brokers, they are rerouted through clandestine Southeast Asian routes.");
+L.polyline([[25.2048,55.2708],[3.1390,101.6869]], routeStyle).addTo(humanRouteLayer)
+.bindPopup("<b>Debt-Driven Mobility</b>");
 
-/// STEP 4: Malaysia → Indonesia
-L.polyline([
-    [3.1390, 101.6869],
-    [-6.2088, 106.8456]
-], routeStyle)
-.addTo(humanRouteLayer)
-.bindPopup("<b>Forced Secondary Migration</b><br>Failed contracts lead to further smuggling across maritime borders.");
+L.polyline([[3.1390,101.6869],[-6.2088,106.8456]], routeStyle).addTo(humanRouteLayer)
+.bindPopup("<b>Forced Secondary Migration</b>");
 
+// subplot route
+L.polyline([[40.6782,-73.9442],[22.5726,88.3639]], {
+  color:"gray", weight:2, opacity:0.6, dashArray:"3,6"
+}).addTo(humanRouteLayer);
 
-L.polyline(
-  [
-    [40.6782, -73.9442], // Brooklyn
-    [22.5726, 88.3639]   // Kolkata
-  ],
-  {
-    color: "gray",
-    weight: 2,
-    opacity: 0.6,
-    dashArray: "3, 6"
-  }
-).addTo(humanRouteLayer)
-.bindPopup(
-  "<b>Climate-based seasonal movement (subplot)</b><br>" +
-  "Dinanath Dutta’s regular winter migration from Brooklyn to Kolkata."
-);
+// place marker
+L.marker([21.9497,89.1833],{pane:'markerPaneTop'}).addTo(placeLayer)
+.bindPopup("<b>Sundarbans</b>");
 
-L.tileLayer(
-  'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',
-  {
-    attribution: '© OpenStreetMap © CARTO'
-  }
-).addTo(map);
-
-// Place marker: Sundarbans
-L.marker([21.9497, 89.1833]).addTo(placeLayer)
-.bindPopup("<b>Sundarbans</b><br>Climate-vulnerable delta where human and non-human migration begins.");
-
-  
-setTimeout(function () {
+// zoom to route
+setTimeout(function(){
     map.fitBounds(humanRouteLayer.getBounds());
-}, 500);
+},500);
 
 </script>
+
 
 </body>
 </html>
