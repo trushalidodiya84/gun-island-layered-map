@@ -67,6 +67,20 @@ L.polyline([
 ], {color:"red", weight:3})
 .addTo(humanRouteLayer)
 .bindPopup("<b>Forced Secondary Migration</b><br>Failed contracts lead to further smuggling across maritime borders.");
+// Sundarbans Ecological Zone (Cyclone & Erosion Region)
+L.polygon([
+    [22.40, 88.10],
+    [22.35, 89.10],
+    [21.70, 89.60],
+    [21.30, 89.20],
+    [21.40, 88.20]
+], {
+    color: "green",
+    fillColor: "green",
+    fillOpacity: 0.25,
+    weight: 2
+}).addTo(placeLayer)
+.bindPopup("<b>Sundarbans Ecological Zone</b><br>Repeated cyclones (e.g., Aila 2009) trigger evacuation, livelihood loss and long-term migration.");
 
 L.polyline(
   [
