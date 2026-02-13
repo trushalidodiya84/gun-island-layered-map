@@ -52,56 +52,55 @@ L.polygon([
 }).addTo(placeLayer)
 .bindPopup("<b>Sundarbans Ecological Zone</b><br>Repeated cyclones trigger migration.");
 
-// Route style
-var routeStyle = {
-    color: "red",
-    weight: 3,
-    lineCap: "round",
-    lineJoin: "round"
-};
+// Sundarbans origin
+L.marker([21.80,89.00],{pane:'markerPaneTop'}).addTo(humanRouteLayer)
+.bindPopup(
+"<b>Sundarbans: Ecological Precarity</b><br>" +
+"Repeated cyclones, saline intrusion and erosion destroy livelihoods. " +
+"Environmental instability produces vulnerable populations who become targets of trafficking networks."
+);
 
-// Trafficking route steps
-L.polyline([[21.80,89.00],[23.8103,90.4125]], routeStyle).addTo(humanRouteLayer)
-.bindPopup("<b>Ecological Displacement</b>");
+// Bangladesh transit
+L.marker([23.8103,90.4125],{pane:'markerPaneTop'}).addTo(humanRouteLayer)
+.bindPopup(
+"<b>Bangladesh Transit Zone</b><br>" +
+"Nearby borders enable informal crossing. Migration shifts from displacement to organised movement through brokers and middlemen."
+);
 
-L.polyline([[23.8103,90.4125],[25.2048,55.2708]], routeStyle).addTo(humanRouteLayer)
-.bindPopup("<b>Labour Migration Network</b>");
+// Gulf destination
+L.marker([25.2048,55.2708],{pane:'markerPaneTop'}).addTo(humanRouteLayer)
+.bindPopup(
+"<b>Gulf Labour Circuits</b><br>" +
+"Migrants enter exploitative labour markets. Promised economic mobility turns into contractual dependency and debt."
+);
 
-L.polyline([[25.2048,55.2708],[3.1390,101.6869]], routeStyle).addTo(humanRouteLayer)
-.bindPopup("<b>Debt-Driven Mobility</b>");
+// Malaysia
+L.marker([3.1390,101.6869],{pane:'markerPaneTop'}).addTo(humanRouteLayer)
+.bindPopup(
+"<b>Debt-Driven Mobility</b><br>" +
+"When repayment fails, migrants are rerouted into clandestine Southeast Asian routes controlled by trafficking networks."
+);
 
-L.polyline([[3.1390,101.6869],[-6.2088,106.8456]], routeStyle).addTo(humanRouteLayer)
-.bindPopup("<b>Forced Secondary Migration</b>");
+// Indonesia
+L.marker([-6.2088,106.8456],{pane:'markerPaneTop'}).addTo(humanRouteLayer)
+.bindPopup(
+"<b>Secondary Smuggling Destination</b><br>" +
+"Movement becomes cyclical displacement rather than settlement, illustrating precarious existence within globalised migration systems."
+);
+
+.bindPopup("<b>Ecological Displacement</b><br>Climate crisis triggers outward mobility from the deltaic Sundarbans region.");
+
+.bindPopup("<b>Trafficking Network Formation</b><br>Movement becomes organised through brokers linking South Asia to Gulf labour economies.");
+
+.bindPopup("<b>Capitalist Labour Extraction</b><br>Migration tied to debt, contract and economic dependency.");
+
+.bindPopup("<b>Forced Secondary Migration</b><br>Failure within labour circuits produces further smuggling across maritime borders.");
 
 // subplot route
 L.polyline([[40.6782,-73.9442],[22.5726,88.3639]], {
   color:"gray", weight:2, opacity:0.6, dashArray:"3,6"
 }).addTo(humanRouteLayer);
 
-// place marker
-L.marker([21.9497,89.1833],{pane:'markerPaneTop'}).addTo(placeLayer)
-.bindPopup("<b>Sundarbans</b>");
-// Route stop markers (same layer as route)
-
-// Sundarbans origin
-L.marker([21.80,89.00],{pane:'markerPaneTop'}).addTo(humanRouteLayer)
-.bindPopup("<b>Sundarbans</b><br>Climate-affected origin");
-
-// Bangladesh transit
-L.marker([23.8103,90.4125],{pane:'markerPaneTop'}).addTo(humanRouteLayer)
-.bindPopup("<b>Bangladesh</b><br>Cross-border movement");
-
-// Gulf labour destination
-L.marker([25.2048,55.2708],{pane:'markerPaneTop'}).addTo(humanRouteLayer)
-.bindPopup("<b>Gulf Region</b><br>Labour migration");
-
-// Malaysia
-L.marker([3.1390,101.6869],{pane:'markerPaneTop'}).addTo(humanRouteLayer)
-.bindPopup("<b>Malaysia</b><br>Debt-driven movement");
-
-// Indonesia
-L.marker([-6.2088,106.8456],{pane:'markerPaneTop'}).addTo(humanRouteLayer)
-.bindPopup("<b>Indonesia</b><br>Secondary smuggling destination");
 
 // zoom to route
 setTimeout(function(){
