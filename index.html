@@ -34,30 +34,30 @@ L.tileLayer(
 // Layers
 var placeLayer = L.layerGroup().addTo(map);
 var humanRouteLayer = L.layerGroup().addTo(map);
+  // Trafficking route markers
+
+// Sundarbans origin
+L.marker([21.80, 89.00]).addTo(placeLayer)
+.bindPopup("<b>Sundarbans</b><br>Climate-affected origin of trafficking migration.");
+
+// Bangladesh transit
+L.marker([23.8103, 90.4125]).addTo(placeLayer)
+.bindPopup("<b>Bangladesh Transit</b><br>First cross-border movement point in trafficking network.");
+
+// Gulf destination
+L.marker([25.2048, 55.2708]).addTo(placeLayer)
+.bindPopup("<b>Gulf Region</b><br>Labour destination for trafficked migrants.");
+
+// Malaysia
+L.marker([3.1390, 101.6869]).addTo(placeLayer)
+.bindPopup("<b>Malaysia</b><br>Secondary trafficking destination if debts unpaid.");
+
+// Indonesia
+L.marker([-6.2088, 106.8456]).addTo(placeLayer)
+.bindPopup("<b>Indonesia</b><br>Alternative smuggling destination in Southeast Asia.");
+
 var animalRouteLayer = L.layerGroup().addTo(map);
-
-  // Major human trafficking migration route
-L.polyline(
-  [
-    [21.80, 89.00],   // Sundarbans
-    [23.8103, 90.4125], // Bangladesh (Dhaka transit)
-    [25.2048, 55.2708], // Gulf (Dubai region)
-    [3.1390, 101.6869], // Malaysia (Kuala Lumpur)
-    [-6.2088, 106.8456] // Indonesia (Jakarta)
-  ],
-  {
-    color: "red",
-    weight: 4,
-    opacity: 0.9
-  }
-).addTo(humanRouteLayer)
-.bindPopup(
-  "<b>Trafficking Migration Corridor</b><br>" +
-  "Climate displacement from the Sundarbans feeds trafficking routes through Bangladesh to the Gulf and Southeast Asia in <i>Gun Island</i>."
-);
-
-
-
+  
 L.polyline(
   [
     [40.6782, -73.9442], // Brooklyn
