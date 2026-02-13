@@ -67,30 +67,6 @@ L.polyline([
 ], {color:"red", weight:3})
 .addTo(humanRouteLayer)
 .bindPopup("<b>Forced Secondary Migration</b><br>Failed contracts lead to further smuggling across maritime borders.");
-// 1 Sundarbans → Bangladesh
-L.polyline([
-    [21.80, 89.00],
-    [23.8103, 90.4125]
-], {color:"red", weight:3}).addTo(humanRouteLayer);
-
-// 2 Bangladesh → Gulf
-L.polyline([
-    [23.8103, 90.4125],
-    [25.2048, 55.2708]
-], {color:"red", weight:3}).addTo(humanRouteLayer);
-
-// 3 Gulf → Malaysia
-L.polyline([
-    [25.2048, 55.2708],
-    [3.1390, 101.6869]
-], {color:"red", weight:3}).addTo(humanRouteLayer);
-
-// 4 Malaysia → Indonesia
-L.polyline([
-    [3.1390, 101.6869],
-    [-6.2088, 106.8456]
-], {color:"red", weight:3}).addTo(humanRouteLayer);
-
 
 L.polyline(
   [
