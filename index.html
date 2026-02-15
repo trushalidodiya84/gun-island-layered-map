@@ -36,6 +36,8 @@ map.getPane('markerPaneTop').style.zIndex = 650;
 var placeLayer = L.layerGroup().addTo(map);
 var humanRouteLayer = L.featureGroup().addTo(map);
 var animalRouteLayer = L.layerGroup().addTo(map);
+  var tipuRafiLayer = L.featureGroup().addTo(map);
+
 
 // Sundarbans zone
 L.polygon([
@@ -427,74 +429,109 @@ munirPlaces.forEach(function(p){
       .bindPopup("<b>"+p[0]+"</b>");
 });
 
-/* ================= TIPU & RAFI COMMON ROUTE ================= */
+/* ================= TIPU & RAFI JOURNEY (DETAILED) ================= */
 
-var commonPath = [
-    [21.9497, 89.1833],  // Lusibari, Sundarbans
-    [22.10, 89.20],      // Raimangal River crossing
-    [23.8103, 90.4125],  // Bangladesh
-    [30.3753, 69.3451],  // Pakistan
-    [32.4279, 53.6880],  // Iran
-    [39.9334, 32.8597],  // Turkey
-    [41.0082, 28.9784]   // Istanbul (separation)
-];
+// Sundarbans
+L.marker([21.80,89.00],{pane:'markerPaneTop'}).addTo(tipuRafiLayer)
+.bindPopup("<b>Lusibari, Sundarbans — Ecological Origin</b><br>"
++"Cyclones, salinity and erosion destroy livelihoods. Migration begins as survival rather than choice — environmental crisis turns into human mobility.");
 
-L.polyline(commonPath,{
-    color:"#555555",
-    weight:4,
-    dashArray:"6,6"
-}).addTo(humanRouteLayer)
-.bindPopup(
-"<b>Illegal Migration Network</b><br><br>" +
-"Tipu and Rafi travel from the Sundarbans through Bangladesh, Pakistan and Iran into Turkey using migrant smuggling corridors."
-);
-L.circleMarker([41.0082,28.9784],{
-    radius:7,
-    color:"black",
-    fillColor:"yellow",
-    fillOpacity:1,
-    pane:'markerPaneTop'
-}).addTo(humanRouteLayer)
-.bindPopup(
-"<b>Point of Separation – Istanbul</b><br>" +
-"During the hazardous Mediterranean attempt and smuggling chaos, Tipu and Rafi lose contact."
-);
-/* ================= RAFI ROUTE ================= */
+// Dhaka
+L.marker([23.8103,90.4125],{pane:'markerPaneTop'}).addTo(tipuRafiLayer)
+.bindPopup("<b>Dhaka — Migration Preparation Zone</b><br>"
++"The city acts as a gathering hub where migrants contact brokers and enter organised transnational smuggling networks.");
 
-var rafiPath = [
-    [41.0082, 28.9784],  // Istanbul
-    [42.6977, 23.3219],  // Bulgaria
-    [44.7866, 20.4489],  // Serbia
-    [47.4979, 19.0402],  // Hungary
-    [48.2082, 16.3738],  // Austria
-    [45.4642, 9.1900],   // Italy
-    [30.0444, 31.2357]   // Egypt
-];
+// Benapole Border
+L.marker([23.0450,88.8300],{pane:'markerPaneTop'}).addTo(tipuRafiLayer)
+.bindPopup("<b>Benapole Border Crossing</b><br>"
++"The political border converts displacement into illegal migration. Movement now depends on traffickers rather than community routes.");
 
-L.polyline(rafiPath,{
-    color:"#00897B",
-    weight:4
-}).addTo(humanRouteLayer)
-.bindPopup(
-"<b>Rafi’s Post-Separation Route</b><br><br>" +
-var rafiPath = [
-    [41.0082, 28.9784],  // Istanbul (separation point)
-    [42.6977, 23.3219],  // Bulgaria
-    [44.7866, 20.4489],  // Serbia
-    [47.4979, 19.0402],  // Hungary
-    [48.2082, 16.3738],  // Austria
-    [45.4642, 9.1900],   // Italy mainland
-    [45.4408, 12.3155]   // Venice FINAL DESTINATION
-];
+// Pakistan
+L.marker([24.8607,67.0011],{pane:'markerPaneTop'}).addTo(tipuRafiLayer)
+.bindPopup("<b>Pakistan — Entry into Smuggling Corridor</b><br>"
++"Migrants travel hidden in trucks and safe houses, losing control over their own movement.");
 
-L.polyline(rafiPath,{
-    color:"#00897B",
-    weight:4
-}).addTo(humanRouteLayer)
-.bindPopup(
-"<b>Rafi’s Migration to Europe</b><br><br>" +
-"After being separated from Tipu near Istanbul, Rafi travels through the Balkan refugee corridor and finally reaches Venice — the same city once reached by the Gun Merchant centuries earlier."
-);
+// Iran
+L.marker([35.6892,51.3890],{pane:'markerPaneTop'}).addTo(tipuRafiLayer)
+.bindPopup("<b>Iran — Survival Landscape</b><br>"
++"Desert crossings, hunger and exhaustion dominate. Migration becomes endurance rather than travel.");
+
+// Turkey separation
+L.marker([41.0082,28.9784],{pane:'markerPaneTop'}).addTo(tipuRafiLayer)
+.bindPopup("<b>Turkey — Point of Separation</b><br>"
++"Overcrowding and chaotic transfers separate Tipu and Rafi. Migration fractures relationships and turns collective journeys into solitary survival.");
+
+// Bulgaria
+L.marker([42.6977,23.3219],{pane:'markerPaneTop'}).addTo(tipuRafiLayer)
+.bindPopup("<b>Bulgaria — Entry into Europe</b><br>"
++"First encounter with surveillance and detention risk inside the European border regime.");
+
+// Serbia
+L.marker([44.7866,20.4489],{pane:'markerPaneTop'}).addTo(tipuRafiLayer)
+.bindPopup("<b>Serbia — Waiting Geography</b><br>"
++"Temporary camps create a condition of suspended belonging.");
+
+// Hungary
+L.marker([47.4979,19.0402],{pane:'markerPaneTop'}).addTo(tipuRafiLayer)
+.bindPopup("<b>Hungary — Militarised Border</b><br>"
++"Fences and patrols replace older imperial mobility routes.");
+
+// Austria
+L.marker([48.2082,16.3738],{pane:'markerPaneTop'}).addTo(tipuRafiLayer)
+.bindPopup("<b>Austria — Invisible Mobility</b><br>"
++"Movement becomes hidden inside transport networks rather than open migration routes.");
+
+// Italy
+L.marker([45.4642,9.1900],{pane:'markerPaneTop'}).addTo(tipuRafiLayer)
+.bindPopup("<b>Italy — Internal European Circulation</b><br>"
++"Rail networks allow migrants to merge into everyday movement systems.");
+
+// Venice
+L.marker([45.44,12.33],{pane:'markerPaneTop'}).addTo(tipuRafiLayer)
+.bindPopup("<b>Venice — Historical Convergence</b><br>"
++"Rafi reaches the same destination as the Gun Merchant centuries earlier, showing migration as a recurring human condition.");
+/* ================= ROUTE SEGMENTS ================= */
+
+function tipuRoute(a,b,text){
+    L.polyline([a,b],{
+        color:"orange",
+        weight:4,
+        opacity:0.9
+    }).addTo(tipuRafiLayer).bindPopup(text);
+}
+
+tipuRoute([21.80,89.00],[23.8103,90.4125],
+"Village to city — environmental displacement enters migration networks");
+
+tipuRoute([23.8103,90.4125],[23.0450,88.8300],
+"Preparation for illegal border crossing");
+
+tipuRoute([23.0450,88.8300],[24.8607,67.0011],
+"Entry into organised trafficking corridor");
+
+tipuRoute([24.8607,67.0011],[35.6892,51.3890],
+"Long-distance survival journey across harsh terrain");
+
+tipuRoute([35.6892,51.3890],[41.0082,28.9784],
+"Asia–Europe migration gateway");
+
+tipuRoute([41.0082,28.9784],[42.6977,23.3219],
+"Illegal entry into European border regime");
+
+tipuRoute([42.6977,23.3219],[44.7866,20.4489],
+"Refugee corridor through transitional states");
+
+tipuRoute([44.7866,20.4489],[47.4979,19.0402],
+"Militarised frontier crossing");
+
+tipuRoute([47.4979,19.0402],[48.2082,16.3738],
+"Hidden mobility inside Europe");
+
+tipuRoute([48.2082,16.3738],[45.4642,9.1900],
+"Rail transport passage");
+
+tipuRoute([45.4642,9.1900],[45.44,12.33],
+"Arrival — convergence with historical migration routes");
 
 
 // zoom to route
