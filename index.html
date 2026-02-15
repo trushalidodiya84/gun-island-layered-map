@@ -516,8 +516,13 @@ route([45.4642,9.1900],[45.44,12.33],"Arrival at Venice");
 
 // zoom to route
 setTimeout(function(){
-    map.fitBounds(humanRouteLayer.getBounds());
-},500);
+    var bounds = L.latLngBounds([]);
+
+    bounds.extend(humanRouteLayer.getBounds());
+
+    map.fitBounds(bounds.pad(0.2));
+},800);
+
 
 </script>
 
