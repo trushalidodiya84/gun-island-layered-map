@@ -31,37 +31,36 @@ L.tileLayer(
 // layer for animals
 var animalLayer = L.featureGroup().addTo(map);
 
-/* ================= DOLPHIN ECOLOGICAL NETWORK ================= */
+/* ================= DOLPHIN MOVEMENT NETWORK ================= */
 
-var dolphinNodes = [
-[21.95,89.18],  // Sundarbans
-[20.8,89.0],
-[19.8,88.7],
-[18.5,88.5],
-[17.5,87.9],
-[19.2,90.1],
-[18.8,91.0]
+var dolphinPath = [
+    [21.90, 88.90], // inner mangrove creek
+    [21.85, 89.05], // Raimangal estuary
+    [21.70, 89.20], // delta mouth
+    [21.40, 89.40], // coastal mixing water
+    [21.00, 89.80], // shallow bay feeding zone
+    [20.60, 90.20], // open bay
+    [20.90, 89.70], // return current path
+    [21.30, 89.30], // tidal channel
+    [21.70, 89.10], // estuary return
+    [21.90, 88.95]  // mangrove re-entry
 ];
 
-// draw network connections
-for(let i=0;i<dolphinNodes.length;i++){
-    for(let j=i+1;j<dolphinNodes.length;j++){
-        L.polyline([dolphinNodes[i],dolphinNodes[j]],{
-            color:"blue",
-            weight:1.5,
-            opacity:0.4
-        }).addTo(animalLayer);
-    }
-}
-
-// explanation
-L.circle([21.95,89.18],{
-radius:250000,
-color:"blue",
-fillOpacity:0.08
+L.polyline(dolphinPath,{
+    color:"blue",
+    weight:3,
+    opacity:0.8,
+    smoothFactor:1.5
 }).addTo(animalLayer)
-.bindPopup("<b>Habitat Dispersal Zone</b><br>"
-+"Marine species do not follow fixed routes. Environmental disturbance creates expanding movement networks across the Bay of Bengal.");
+.bindPopup("Irrawaddy dolphin tidal feeding migration network");
+dolphinPath.forEach(function(pt){
+    L.circleMarker(pt,{
+        radius:4,
+        color:"blue",
+        fillColor:"white",
+        fillOpacity:1
+    }).addTo(animalLayer);
+});
 
 map.fitBounds(animalLayer.getBounds());
 
