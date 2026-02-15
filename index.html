@@ -387,7 +387,28 @@ gunPlaces.forEach(function(p){
       .bindPopup("<b>"+p[0]+"</b>");
 });
 
-  
+/* ================= MUNIR REFUGEE ROUTE ================= */
+
+var munirPath = [
+    [23.8103, 90.4125],  // Dhaka (cyclone loss)
+    [22.8456, 89.5403],  // Khulna (internal displacement)
+    [55.7558, 37.6176],  // Russia
+    [42.6977, 23.3219],  // Bulgaria
+    [44.0165, 21.0059],  // Yugoslavia / Balkans region
+    [41.8719, 12.5674]   // Italy (European entry)
+];
+
+var munirRoute = L.polyline(munirPath,{
+    color:"#8B4513",
+    weight:4,
+    opacity:0.9
+}).addTo(humanRouteLayer);
+munirRoute.bindPopup(
+"<b>Munir’s Refugee Migration</b><br><br>" +
+"After a cyclone destroys his home in Dhaka, Munir moves to Khulna and begins an undocumented migration through Eurasian refugee corridors: Russia → Balkans → Italy.<br><br>" +
+"This path reflects real contemporary refugee routes shaped by climate disaster, border control and survival mobility rather than trade or labour contracts."
+);
+ 
 // zoom to route
 setTimeout(function(){
     map.fitBounds(humanRouteLayer.getBounds());
