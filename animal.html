@@ -31,76 +31,45 @@ L.tileLayer(
 // layer for animals
 var animalLayer = L.featureGroup().addTo(map);
 
-/* ================= DOLPHIN MOVEMENT NETWORK ================= */
+/* ================= IRRAWADDY DOLPHIN RANGE ================= */
 
-var dolphinPath = [
-    [21.90, 88.90], // inner mangrove creek
-    [21.85, 89.05], // Raimangal estuary
-    [21.70, 89.20], // delta mouth
-    [21.40, 89.40], // coastal mixing water
-    [21.00, 89.80], // shallow bay feeding zone
-    [20.60, 90.20], // open bay
-    [20.90, 89.70], // return current path
-    [21.30, 89.30], // tidal channel
-    [21.70, 89.10], // estuary return
-    [21.90, 88.95]  // mangrove re-entry
+var dolphinRange = L.polygon([
+    [22.30, 88.60],
+    [22.15, 89.20],
+    [21.95, 89.50],
+    [21.60, 89.70],
+    [21.20, 89.85],
+    [20.90, 89.70],
+    [21.10, 89.20],
+    [21.40, 88.80],
+    [21.80, 88.60],
+    [22.10, 88.55]
+],{
+    color:"#2b8cbe",
+    fillColor:"#7ec8e3",
+    fillOpacity:0.35,
+    weight:2
+}).addTo(animalMigrationLayer);
+
+dolphinRange.bindPopup(
+"<b>Irrawaddy Dolphin Habitat Zone</b><br>" +
+"Not a travel route but an ecological range. Dolphins move continuously across tidal channels, estuaries and coastal waters following salinity and fish movement."
+);
+var feedingZones = [
+ [22.05,89.10],
+ [21.85,89.30],
+ [21.65,89.45],
+ [21.35,89.60]
 ];
 
-L.polyline(dolphinPath,{
-    color:"blue",
-    weight:3,
-    opacity:0.8,
-    smoothFactor:1.5
-}).addTo(animalLayer)
-.bindPopup("Irrawaddy dolphin tidal feeding migration network");
-dolphinPath.forEach(function(pt){
+feedingZones.forEach(function(pt){
     L.circleMarker(pt,{
         radius:4,
-        color:"blue",
-        fillColor:"white",
+        color:"#08519c",
+        fillColor:"#c6dbef",
         fillOpacity:1
-    }).addTo(animalLayer);
-});
-/* ================= ANIMAL MIGRATION NETWORK ================= */
-
-var animalLayer = L.featureGroup().addTo(map);
-
-/* Core ecological nodes */
-
-var nodes = {
-    mangroveNorth: [21.95, 89.00],
-    mangroveSouth: [21.75, 89.15],
-    estuary: [21.60, 89.30],
-    deltaMouth: [21.40, 89.45],
-    coastalZone: [21.10, 89.60],
-    offshoreZone: [20.80, 89.85]
-};
-
-/* Draw corridor connections */
-
-function connect(a,b){
-    L.polyline([a,b],{
-        color:"blue",
-        weight:3,
-        opacity:0.85
-    }).addTo(animalLayer);
-}
-
-connect(nodes.mangroveNorth, nodes.mangroveSouth);
-connect(nodes.mangroveSouth, nodes.estuary);
-connect(nodes.estuary, nodes.deltaMouth);
-connect(nodes.deltaMouth, nodes.coastalZone);
-connect(nodes.coastalZone, nodes.offshoreZone);
-
-/* Add node markers */
-
-Object.values(nodes).forEach(function(pt){
-    L.circleMarker(pt,{
-        radius:5,
-        color:"blue",
-        fillColor:"white",
-        fillOpacity:1
-    }).addTo(animalLayer);
+    }).addTo(animalMigrationLayer)
+    .bindPopup("Frequent dolphin activity zone");
 });
 
 map.fitBounds(animalLayer.getBounds());
