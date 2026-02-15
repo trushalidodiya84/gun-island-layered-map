@@ -318,8 +318,19 @@ var gunMerchantPath = [
     [45.44, 12.33]    // Venice
 ];
 /* ===== Venice Image Marker ===== */
+L.circleMarker([45.44,12.33],{
+    radius:7,
+    color:"purple",
+    fillColor:"white",
+    fillOpacity:1,
+    pane:'markerPaneTop'
+}).addTo(humanRouteLayer)
+.bindPopup(
+"<b>Bonduki Dwip – Venice (Island within Island)</b><br>" +
+"<img src='venice.jpg' width='260'><br>" +
+"Final refuge of the Gun Merchant. A floating migrant city — settlement without rooted belonging."
+);
 
-<img src="venice.jpg" width="260">
 
 // route line
 var gunMerchantRoute = L.polyline(gunMerchantPath,{
