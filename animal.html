@@ -150,6 +150,61 @@ L.circleMarker([45.44,12.33],{
 "Presence of recluse spider signals northward ecological migration caused by warming climate."
 );
 
+/* ================= MIGRATORY BIRD FLYWAY ================= */
+
+// function to draw curved migration path
+function birdRoute(coords,text){
+    L.polyline(coords,{
+        color:"#ff9800",
+        weight:3,
+        opacity:0.85,
+        dashArray:"5,10"
+    }).addTo(animalLayer).bindPopup(text);
+}
+
+/* Central Asian Flyway style routes */
+
+// India → Iran → Turkey → Europe
+birdRoute(
+[
+    [20.0,88.0],   // Bay of Bengal wintering
+    [24.0,70.0],   // Western India
+    [29.0,60.0],   // Pakistan
+    [33.0,52.0],   // Iran
+    [39.0,35.0],   // Turkey
+    [45.0,12.5]    // Europe / Venice
+],
+"<b>South → North Seasonal Migration</b><br>Birds moving toward breeding grounds in warmer months."
+);
+
+// Arabian Sea path
+birdRoute(
+[
+    [15.0,72.0],
+    [20.0,60.0],
+    [25.0,50.0],
+    [32.0,40.0],
+    [41.0,14.0]
+],
+"<b>Alternative Flyway</b><br>Parallel migration corridor across warming climates."
+);
+
+// stopover zones
+var birdStops = [
+ ["Wintering Grounds",[20.0,88.0]],
+ ["Desert Stopover",[29.0,60.0]],
+ ["Breeding Zone Europe",[45.0,12.5]]
+];
+
+birdStops.forEach(function(p){
+    L.circleMarker(p[1],{
+        radius:5,
+        color:"#e65100",
+        fillColor:"#ffcc80",
+        fillOpacity:1
+    }).addTo(animalLayer)
+    .bindPopup("<b>"+p[0]+"</b>");
+});
 
 </script>
 </body>
