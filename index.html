@@ -408,6 +408,25 @@ munirRoute.bindPopup(
 "After a cyclone destroys his home in Dhaka, Munir moves to Khulna and begins an undocumented migration through Eurasian refugee corridors: Russia → Balkans → Italy.<br><br>" +
 "This path reflects real contemporary refugee routes shaped by climate disaster, border control and survival mobility rather than trade or labour contracts."
 );
+var munirPlaces = [
+["Dhaka – cyclone devastation",[23.8103,90.4125]],
+["Khulna – internal displacement",[22.8456,89.5403]],
+["Russia – entry into smuggling corridor",[55.7558,37.6176]],
+["Bulgaria – Balkan border crossing",[42.6977,23.3219]],
+["Yugoslavia/Balkans – refugee passage",[44.0165,21.0059]],
+["Italy – European arrival",[41.8719,12.5674]]
+];
+
+munirPlaces.forEach(function(p){
+    L.circleMarker(p[1],{
+        radius:6,
+        color:"#8B4513",
+        fillColor:"white",
+        fillOpacity:1,
+        pane:'markerPaneTop'
+    }).addTo(humanRouteLayer)
+      .bindPopup("<b>"+p[0]+"</b>");
+});
  
 // zoom to route
 setTimeout(function(){
