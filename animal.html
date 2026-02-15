@@ -31,26 +31,38 @@ L.tileLayer(
 // layer for animals
 var animalLayer = L.featureGroup().addTo(map);
 
-/* ================= IRRAWADDY DOLPHIN MOVEMENT ================= */
+/* ================= DOLPHIN ECOLOGICAL NETWORK ================= */
 
-// Sundarbans origin
-L.marker([21.95,89.18]).addTo(animalLayer)
-.bindPopup("<b>Sundarbans Delta</b><br>"
-+"Changing salinity and warming water disturb traditional dolphin habitat.");
+var dolphinNodes = [
+[21.95,89.18],  // Sundarbans
+[20.8,89.0],
+[19.8,88.7],
+[18.5,88.5],
+[17.5,87.9],
+[19.2,90.1],
+[18.8,91.0]
+];
 
-// Bay of Bengal shift
-L.marker([18.5,88.5]).addTo(animalLayer)
-.bindPopup("<b>Bay of Bengal</b><br>"
-+"Dolphins move toward deeper marine waters searching stable ecological conditions.");
-L.polyline([
-[21.95,89.18],
-[18.5,88.5]
-],{
+// draw network connections
+for(let i=0;i<dolphinNodes.length;i++){
+    for(let j=i+1;j<dolphinNodes.length;j++){
+        L.polyline([dolphinNodes[i],dolphinNodes[j]],{
+            color:"blue",
+            weight:1.5,
+            opacity:0.4
+        }).addTo(animalLayer);
+    }
+}
+
+// explanation
+L.circle([21.95,89.18],{
+radius:250000,
 color:"blue",
-weight:4
+fillOpacity:0.08
 }).addTo(animalLayer)
-.bindPopup("<b>Non-Human Climate Migration</b><br>"
-+"Aquatic species shift habitat due to ecological imbalance rather than political borders.");
+.bindPopup("<b>Habitat Dispersal Zone</b><br>"
++"Marine species do not follow fixed routes. Environmental disturbance creates expanding movement networks across the Bay of Bengal.");
+
 map.fitBounds(animalLayer.getBounds());
 
 
