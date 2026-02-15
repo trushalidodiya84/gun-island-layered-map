@@ -31,6 +31,30 @@ L.tileLayer(
 // layer for animals
 var animalLayer = L.featureGroup().addTo(map);
 
+/* ================= IRRAWADDY DOLPHIN MOVEMENT ================= */
+
+// Sundarbans origin
+L.marker([21.95,89.18]).addTo(animalLayer)
+.bindPopup("<b>Sundarbans Delta</b><br>"
++"Changing salinity and warming water disturb traditional dolphin habitat.");
+
+// Bay of Bengal shift
+L.marker([18.5,88.5]).addTo(animalLayer)
+.bindPopup("<b>Bay of Bengal</b><br>"
++"Dolphins move toward deeper marine waters searching stable ecological conditions.");
+L.polyline([
+[21.95,89.18],
+[18.5,88.5]
+],{
+color:"blue",
+weight:4
+}).addTo(animalLayer)
+.bindPopup("<b>Non-Human Climate Migration</b><br>"
++"Aquatic species shift habitat due to ecological imbalance rather than political borders.");
+map.fitBounds(animalLayer.getBounds());
+
+
+
 </script>
 </body>
 </html>
