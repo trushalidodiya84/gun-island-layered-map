@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Gun Island – Animal Migration</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<style>
+#map { height: 95vh; }
+</style>
+</head>
+
+<body>
+
+<h3>Gun Island – Animal Migration Map</h3>
+<div id="map"></div>
+
+<script>
+
+// create map
+var map = L.map('map').setView([20, 40], 3);
+
+// clean basemap
+L.tileLayer(
+'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',
+{ attribution: '© OpenStreetMap © CARTO' }
+).addTo(map);
+
+// layer for animals
+var animalLayer = L.featureGroup().addTo(map);
+
+</script>
+</body>
+</html>
