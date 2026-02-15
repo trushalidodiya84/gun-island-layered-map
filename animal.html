@@ -205,6 +205,52 @@ birdStops.forEach(function(p){
     }).addTo(animalLayer)
     .bindPopup("<b>"+p[0]+"</b>");
 });
+/* ================= SNAKE DISPLACEMENT ZONES ================= */
+
+// Original mangrove habitat
+L.polygon([
+ [22.25,88.70],
+ [22.10,89.20],
+ [21.80,89.40],
+ [21.50,89.30],
+ [21.60,88.90]
+],{
+ color:"#006d2c",
+ fillColor:"#31a354",
+ fillOpacity:0.35,
+ weight:2
+}).addTo(animalLayer)
+.bindPopup("<b>Original Snake Habitat</b><br>Mangrove burrows destroyed by salinity and flooding.");
+
+// Pressure zone (villages)
+L.polygon([
+ [22.15,88.60],
+ [22.00,89.30],
+ [21.70,89.55],
+ [21.40,89.40],
+ [21.45,88.80]
+],{
+ color:"#bdbd00",
+ fillColor:"#ffff66",
+ fillOpacity:0.4,
+ weight:2
+}).addTo(animalLayer)
+.bindPopup("<b>Ecological Pressure Zone</b><br>Snakes forced into agricultural and settlement areas.");
+
+// Human intrusion zone (houses & boats)
+L.polygon([
+ [22.00,88.50],
+ [21.90,89.30],
+ [21.60,89.60],
+ [21.30,89.45],
+ [21.25,88.70]
+],{
+ color:"#a50f15",
+ fillColor:"#fb6a4a",
+ fillOpacity:0.45,
+ weight:2
+}).addTo(animalLayer)
+.bindPopup("<b>Human Encounter Zone</b><br>Snakes enter homes and boats — ecological refugees.");
 
 </script>
 </body>
