@@ -49,12 +49,15 @@ var dolphinRange = L.polygon([
     fillColor:"#7ec8e3",
     fillOpacity:0.35,
     weight:2
-}).addTo(animalMigrationLayer);
+}).addTo(animalLayer);
 
 dolphinRange.bindPopup(
 "<b>Irrawaddy Dolphin Habitat Zone</b><br>" +
-"Not a travel route but an ecological range. Dolphins move continuously across tidal channels, estuaries and coastal waters following salinity and fish movement."
+"Not a migration line but a living ecological range. Dolphins constantly circulate through tidal channels following fish and salinity gradients."
 );
+
+/* Feeding / activity nodes */
+
 var feedingZones = [
  [22.05,89.10],
  [21.85,89.30],
@@ -68,11 +71,32 @@ feedingZones.forEach(function(pt){
         color:"#08519c",
         fillColor:"#c6dbef",
         fillOpacity:1
-    }).addTo(animalMigrationLayer)
+    }).addTo(animalLayer)
     .bindPopup("Frequent dolphin activity zone");
 });
 
+/* zoom to animal data */
 map.fitBounds(animalLayer.getBounds());
+
+/* NEW REFUGE — deep inner river (after pollution & tide pressure) */
+
+L.polygon([
+    [22.05,89.15],
+    [21.90,89.40],
+    [21.70,89.55],
+    [21.55,89.45],
+    [21.70,89.20],
+    [21.90,89.05]
+],{
+    color:"#08306b",
+    fillColor:"#08519c",
+    fillOpacity:0.55,
+    weight:2
+}).addTo(animalLayer)
+.bindPopup(
+"<b>Compressed Refuge Habitat</b><br>" +
+"Due to industrial discharge and marine salinity intrusion, dolphins retreat into deeper interior channels. Habitat shrinks but density increases."
+);
 
 
 
