@@ -427,6 +427,70 @@ munirPlaces.forEach(function(p){
       .bindPopup("<b>"+p[0]+"</b>");
 });
 
+/* ================= TIPU & RAFI COMMON ROUTE ================= */
+
+var commonPath = [
+    [21.9497, 89.1833],  // Lusibari, Sundarbans
+    [22.10, 89.20],      // Raimangal River crossing
+    [23.8103, 90.4125],  // Bangladesh
+    [30.3753, 69.3451],  // Pakistan
+    [32.4279, 53.6880],  // Iran
+    [39.9334, 32.8597],  // Turkey
+    [41.0082, 28.9784]   // Istanbul (separation)
+];
+
+L.polyline(commonPath,{
+    color:"#555555",
+    weight:4,
+    dashArray:"6,6"
+}).addTo(humanRouteLayer)
+.bindPopup(
+"<b>Illegal Migration Network</b><br><br>" +
+"Tipu and Rafi travel from the Sundarbans through Bangladesh, Pakistan and Iran into Turkey using migrant smuggling corridors."
+);
+L.circleMarker([41.0082,28.9784],{
+    radius:7,
+    color:"black",
+    fillColor:"yellow",
+    fillOpacity:1,
+    pane:'markerPaneTop'
+}).addTo(humanRouteLayer)
+.bindPopup(
+"<b>Point of Separation – Istanbul</b><br>" +
+"During the hazardous Mediterranean attempt and smuggling chaos, Tipu and Rafi lose contact."
+);
+/* ================= RAFI ROUTE ================= */
+
+var rafiPath = [
+    [41.0082, 28.9784],  // Istanbul
+    [42.6977, 23.3219],  // Bulgaria
+    [44.7866, 20.4489],  // Serbia
+    [47.4979, 19.0402],  // Hungary
+    [48.2082, 16.3738],  // Austria
+    [45.4642, 9.1900],   // Italy
+    [30.0444, 31.2357]   // Egypt
+];
+
+L.polyline(rafiPath,{
+    color:"#00897B",
+    weight:4
+}).addTo(humanRouteLayer)
+.bindPopup(
+"<b>Rafi’s Post-Separation Route</b><br><br>" +
+"After losing Tipu near Istanbul, Rafi continues through the Balkan corridor into Europe and eventually reaches Egypt."
+);
+L.circleMarker([30.0444,31.2357],{
+    radius:7,
+    color:"#00897B",
+    fillColor:"white",
+    fillOpacity:1,
+    pane:'markerPaneTop'
+}).addTo(humanRouteLayer)
+.bindPopup(
+"<b>Arrival in Egypt</b><br>" +
+"Rafi survives prolonged undocumented migration across multiple borders."
+);
+
 // zoom to route
 setTimeout(function(){
     map.fitBounds(humanRouteLayer.getBounds());
