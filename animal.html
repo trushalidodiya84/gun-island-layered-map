@@ -98,6 +98,57 @@ L.polygon([
 "Due to industrial discharge and marine salinity intrusion, dolphins retreat into deeper interior channels. Habitat shrinks but density increases."
 );
 
+/* ================= RECLUSE SPIDER RANGE SHIFT (EUROPE) ================= */
+
+// historical Mediterranean zone
+var oldRange = L.polygon([
+    [36.0, -5.0],  // Spain
+    [37.0, 15.0],  // Sicily
+    [38.0, 22.0],  // Greece
+    [41.0, 18.0],  // Adriatic
+    [40.0, 5.0]    // back west
+],{
+    color:"#8e24aa",
+    fillColor:"#ce93d8",
+    fillOpacity:0.35,
+    weight:2
+}).addTo(animalLayer);
+
+oldRange.bindPopup(
+"<b>Mediterranean Recluse – Historical Habitat</b><br>" +
+"Warm southern Europe where recluse spiders traditionally survived winters."
+);
+
+// expanded northern range
+var newRange = L.polygon([
+    [41.0, 5.0],   // Northern Italy
+    [45.5, 12.5],  // Venice
+    [48.0, 16.0],  // Central Europe
+    [46.0, 20.0],
+    [43.0, 14.0]
+],{
+    color:"#c62828",
+    fillColor:"#ef5350",
+    fillOpacity:0.35,
+    weight:2
+}).addTo(animalLayer);
+
+newRange.bindPopup(
+"<b>Climate-Shifted Range</b><br>" +
+"Increasing European temperatures allow survival further north — sightings in Venice become possible."
+);
+
+// Venice sighting marker
+L.circleMarker([45.44,12.33],{
+    radius:7,
+    color:"#000",
+    fillColor:"#ffeb3b",
+    fillOpacity:1
+}).addTo(animalLayer)
+.bindPopup(
+"<b>Venice Observation (Deen)</b><br>" +
+"Presence of recluse spider signals northward ecological migration caused by warming climate."
+);
 
 
 </script>
