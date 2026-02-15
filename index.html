@@ -514,6 +514,62 @@ route([47.4979,19.0402],[48.2082,16.3738],"Hidden mobility");
 route([48.2082,16.3738],[45.4642,9.1900],"Train movement");
 route([45.4642,9.1900],[45.44,12.33],"Arrival at Venice");
 
+  /* =========================================================
+   BILAL & KABIR ROUTE — AFRICA MEDITERRANEAN CROSSING
+   ========================================================= */
+
+var bilalPath = [
+    [23.6850, 90.3563],   // Bangladesh origin
+    [22.3569, 91.7832],   // Chittagong
+    [25.3463, 55.4209],   // Sharjah (UAE)
+    [15.5007, 32.5599],   // Sudan (Khartoum corridor)
+    [27.0377, 14.4283],   // Libya desert entry
+    [32.8872, 13.1913],   // Tripoli
+    [32.9312, 12.0819],   // Zuwara smuggler coast
+    [41.9028, 12.4964]    // Europe (Italy landing zone)
+];
+
+var bilalRoute = L.polyline(bilalPath,{
+    color:"#003366",
+    weight:4,
+    opacity:0.95
+}).addTo(humanRouteLayer);
+
+bilalRoute.bindPopup(
+"<b>Bilal & Kabir — Mediterranean Migration Route</b><br><br>" +
+
+"Flood and land disputes force departure from Bangladesh. " +
+"They first migrate legally to the Gulf (Sharjah), but economic precarity pushes them into secondary migration networks.<br><br>" +
+
+"They travel through Sudan and the Libyan desert — one of the world’s most dangerous migrant corridors controlled by traffickers.<br><br>" +
+
+"From Tripoli and Zuwara they attempt a Mediterranean sea crossing toward Europe.<br><br>" +
+
+"<b>Kabir disappears during the crossing.</b> " +
+"The journey turns migrants into missing persons — migration here is not relocation but risk of erasure."
+);
+var bilalPlaces = [
+["Bangladesh — Flood displacement",[23.6850,90.3563]],
+["Chittagong — Exit port",[22.3569,91.7832]],
+["Sharjah — Labour migration stage",[25.3463,55.4209]],
+["Sudan — Smuggling corridor",[15.5007,32.5599]],
+["Libya — Desert crossing",[27.0377,14.4283]],
+["Tripoli — Holding zone",[32.8872,13.1913]],
+["Zuwara — Mediterranean departure",[32.9312,12.0819]],
+["Europe — Survival arrival",[41.9028,12.4964]]
+];
+
+bilalPlaces.forEach(function(p){
+    L.circleMarker(p[1],{
+        radius:6,
+        color:"#003366",
+        fillColor:"white",
+        fillOpacity:1,
+        pane:'markerPaneTop'
+    }).addTo(humanRouteLayer)
+      .bindPopup("<b>"+p[0]+"</b>");
+});
+
 // zoom to route
 setTimeout(function(){
     var bounds = L.latLngBounds([]);
