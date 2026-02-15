@@ -477,19 +477,25 @@ L.polyline(rafiPath,{
 }).addTo(humanRouteLayer)
 .bindPopup(
 "<b>Rafi’s Post-Separation Route</b><br><br>" +
-"After losing Tipu near Istanbul, Rafi continues through the Balkan corridor into Europe and eventually reaches Egypt."
-);
-L.circleMarker([30.0444,31.2357],{
-    radius:7,
+var rafiPath = [
+    [41.0082, 28.9784],  // Istanbul (separation point)
+    [42.6977, 23.3219],  // Bulgaria
+    [44.7866, 20.4489],  // Serbia
+    [47.4979, 19.0402],  // Hungary
+    [48.2082, 16.3738],  // Austria
+    [45.4642, 9.1900],   // Italy mainland
+    [45.4408, 12.3155]   // Venice FINAL DESTINATION
+];
+
+L.polyline(rafiPath,{
     color:"#00897B",
-    fillColor:"white",
-    fillOpacity:1,
-    pane:'markerPaneTop'
+    weight:4
 }).addTo(humanRouteLayer)
 .bindPopup(
-"<b>Arrival in Egypt</b><br>" +
-"Rafi survives prolonged undocumented migration across multiple borders."
+"<b>Rafi’s Migration to Europe</b><br><br>" +
+"After being separated from Tipu near Istanbul, Rafi travels through the Balkan refugee corridor and finally reaches Venice — the same city once reached by the Gun Merchant centuries earlier."
 );
+
 
 // zoom to route
 setTimeout(function(){
