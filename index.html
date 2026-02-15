@@ -390,31 +390,30 @@ gunPlaces.forEach(function(p){
 /* ================= MUNIR REFUGEE ROUTE ================= */
 
 var munirPath = [
-    [23.8103, 90.4125],  // Dhaka (cyclone loss)
-    [22.8456, 89.5403],  // Khulna (internal displacement)
-    [55.7558, 37.6176],  // Russia
-    [42.6977, 23.3219],  // Bulgaria
-    [44.0165, 21.0059],  // Yugoslavia / Balkans region
-    [41.8719, 12.5674]   // Italy (European entry)
+    [23.8103, 90.4125],   // Dhaka
+    [55.7558, 37.6176],   // Russia (Moscow entry zone)
+    [42.6977, 23.3219],   // Bulgaria (Sofia)
+    [44.7866, 20.4489],   // Yugoslavia region (Belgrade – Balkans corridor)
+    [41.9028, 12.4964]    // Italy (Rome)
 ];
 
 var munirRoute = L.polyline(munirPath,{
     color:"#8B4513",
     weight:4,
-    opacity:0.9
+    opacity:0.95
 }).addTo(humanRouteLayer);
 munirRoute.bindPopup(
-"<b>Munir’s Refugee Migration</b><br><br>" +
-"After a cyclone destroys his home in Dhaka, Munir moves to Khulna and begins an undocumented migration through Eurasian refugee corridors: Russia → Balkans → Italy.<br><br>" +
-"This path reflects real contemporary refugee routes shaped by climate disaster, border control and survival mobility rather than trade or labour contracts."
+"<b>Munir’s Illegal Refugee Migration</b><br><br>" +
+"After a cyclone destroys his home, Munir leaves Dhaka and enters a clandestine migration chain: Russia → Bulgaria → Yugoslavia → Italy.<br><br>" +
+"This route reflects a real undocumented refugee pathway into Europe driven by environmental loss and economic desperation rather than organised labour migration."
 );
-var munirPlaces = [
-["Dhaka – cyclone devastation",[23.8103,90.4125]],
-["Khulna – internal displacement",[22.8456,89.5403]],
-["Russia – entry into smuggling corridor",[55.7558,37.6176]],
-["Bulgaria – Balkan border crossing",[42.6977,23.3219]],
-["Yugoslavia/Balkans – refugee passage",[44.0165,21.0059]],
-["Italy – European arrival",[41.8719,12.5674]]
+
+ var munirPlaces = [
+["Dhaka – cyclone displacement",[23.8103,90.4125]],
+["Russia – smuggling entry point",[55.7558,37.6176]],
+["Bulgaria – EU border crossing",[42.6977,23.3219]],
+["Yugoslavia – Balkan passage",[44.7866,20.4489]],
+["Italy – destination",[41.9028,12.4964]]
 ];
 
 munirPlaces.forEach(function(p){
@@ -427,7 +426,7 @@ munirPlaces.forEach(function(p){
     }).addTo(humanRouteLayer)
       .bindPopup("<b>"+p[0]+"</b>");
 });
- 
+
 // zoom to route
 setTimeout(function(){
     map.fitBounds(humanRouteLayer.getBounds());
