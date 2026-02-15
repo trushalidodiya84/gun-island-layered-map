@@ -570,6 +570,45 @@ bilalPlaces.forEach(function(p){
       .bindPopup("<b>"+p[0]+"</b>");
 });
 
+/* =========================================================
+   GLOBAL ILLEGAL MIGRATION CONVERGENCE INTO ITALY
+   ========================================================= */
+
+var italy = [45.44,12.33]; // Venice node
+
+var globalFlows = [
+    [[15.3229,38.9251], italy], // Eritrea
+    [[9.1450,40.4897], italy],  // Ethiopia
+    [[15.5007,32.5599], italy], // Sudan
+    [[30.0444,31.2357], italy], // Egypt
+    [[33.5731,-7.5898], italy], // Morocco
+    [[32.8872,13.1913], italy], // Libya
+    [[41.0082,28.9784], italy], // Turkey
+    [[23.6850,90.3563], italy]  // Bangladesh
+];
+
+globalFlows.forEach(function(flow){
+    L.polyline(flow,{
+        color:"#ff0066",
+        weight:3,
+        opacity:0.7,
+        dashArray:"2,8"
+    }).addTo(humanRouteLayer);
+});
+L.circleMarker(italy,{
+    radius:10,
+    color:"#ff0066",
+    fillColor:"#ffffff",
+    fillOpacity:1,
+    pane:'markerPaneTop'
+}).addTo(humanRouteLayer)
+.bindPopup(
+"<b>Italy — Convergence Zone of Global Migration</b><br><br>" +
+"Migrants from Africa, the Middle East and South Asia converge here through illegal routes.<br><br>" +
+"This is not a single journey but a planetary pressure system where climate change, war and economic inequality funnel populations toward Europe.<br><br>" +
+"In Gun Island, Venice becomes a symbolic endpoint where historical and contemporary migrations meet."
+);
+
 // zoom to route
 setTimeout(function(){
     var bounds = L.latLngBounds([]);
