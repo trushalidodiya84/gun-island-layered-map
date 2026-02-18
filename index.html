@@ -609,6 +609,57 @@ L.circleMarker(italy,{
 "In Gun Island, Venice becomes a symbolic endpoint where historical and contemporary migrations meet."
 );
 
+/* ================= USA CLIMATE EVENTS (Gun Island) ================= */
+
+// emoji fire icon (safe — no images, no css needed)
+var fireIcon = L.divIcon({
+    html: "🔥",
+    iconSize: [20,20],
+    className: ""
+});
+
+// Los Angeles Wildfire
+L.marker([34.0522,-118.2437],{icon:fireIcon,pane:'markerPaneTop'})
+.addTo(placeLayer)
+.bindPopup(
+"<b>California Wildfires</b><br>" +
+"Megafires threaten Los Angeles and force evacuations.<br>" +
+"Modern ecological catastrophe in the Anthropocene."
+);
+
+// Extreme Heat Zone (California interior)
+L.circleMarker([36.7783,-119.4179],{
+    radius:6,
+    color:"orange",
+    fillOpacity:0.7
+}).addTo(placeLayer)
+.bindPopup(
+"<b>Extreme Heat & Dry Winds</b><br>" +
+"Unstable climate conditions intensify fires."
+);
+
+// Animal Behaviour Change (West Coast)
+L.circleMarker([37.7749,-122.4194],{
+    radius:6,
+    color:"green",
+    fillOpacity:0.7
+}).addTo(placeLayer)
+.bindPopup(
+"<b>Animal Habitat Shift</b><br>" +
+"Species appear outside natural ecosystems."
+);
+
+// Psychological Impact (Urban USA)
+L.circleMarker([40.7128,-74.0060],{
+    radius:6,
+    color:"purple",
+    fillOpacity:0.7
+}).addTo(placeLayer)
+.bindPopup(
+"<b>Climate Anxiety</b><br>" +
+"Urban populations experience environmental insecurity."
+);
+
 // zoom to route
 setTimeout(function(){
     var bounds = L.latLngBounds([]);
