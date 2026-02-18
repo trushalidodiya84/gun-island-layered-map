@@ -706,14 +706,6 @@ L.circleMarker([40.7128,-74.0060],{
 .bindPopup("<b>Climate Anxiety</b><br>Urban populations feel ecological insecurity.");
 
 
-// ================= AUTO ZOOM =================
-setTimeout(function(){
- map.fitBounds(placeLayer.getBounds().pad(0.5));
-},800);
-
-
-
-
 // zoom to route
 setTimeout(function(){
     var bounds = L.latLngBounds([]);
