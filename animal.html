@@ -251,6 +251,59 @@ L.polygon([
  weight:2
 }).addTo(animalLayer)
 .bindPopup("<b>Human Encounter Zone</b><br>Snakes enter homes and boats — ecological refugees.");
+/* ================= USA CLIMATE EVENTS (Gun Island) ================= */
+
+// fire icon
+var fireIcon = L.divIcon({
+    html: "🔥",
+    iconSize: [22,22],
+    className: ""
+});
+
+// 1. Los Angeles Wildfires
+L.marker([34.0522,-118.2437],{icon:fireIcon,pane:'markerPaneTop'})
+.addTo(placeLayer)
+.bindPopup(
+"<b>California Wildfires – Universal Vulnerability</b><br><br>" +
+"Massive fires spread across forests and urban edges, forcing evacuation and darkening the sky.<br>" +
+"The disaster mirrors the historical fire in the Gun Merchant legend, suggesting that the Anthropocene repeats earlier ecological upheavals on a planetary scale."
+);
+
+// 2. Extreme Heat Conditions
+L.circleMarker([36.7783,-119.4179],{
+    radius:6,
+    color:"orange",
+    fillOpacity:0.8
+}).addTo(placeLayer)
+.bindPopup(
+"<b>Extreme Heat & Atmospheric Instability</b><br><br>" +
+"Abnormal heat waves and dry winds create conditions for megafires.<br>" +
+"Climate systems become unpredictable, showing environmental crisis is structural rather than accidental."
+);
+
+// 3. Animal Behaviour Change
+L.circleMarker([37.7749,-122.4194],{
+    radius:6,
+    color:"green",
+    fillOpacity:0.8
+}).addTo(placeLayer)
+.bindPopup(
+"<b>Multispecies Displacement</b><br><br>" +
+"Animals appear outside natural habitats, paralleling human migration across continents.<br>" +
+"The novel presents ecological imbalance as a shared condition across species."
+);
+
+// 4. Psychological Impact
+L.circleMarker([40.7128,-74.0060],{
+    radius:6,
+    color:"purple",
+    fillOpacity:0.8
+}).addTo(placeLayer)
+.bindPopup(
+"<b>Climate Anxiety & Future Insecurity</b><br><br>" +
+"Urban populations experience fear and uncertainty about environmental stability.<br>" +
+"The distinction between developed and developing worlds collapses — all become potential climate migrants."
+);
 
 </script>
 </body>
