@@ -636,73 +636,54 @@ L.circleMarker(italy,{
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Gun Island Climate Event – California</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+<style>
+#map { height: 100vh; }
+.popupText { font-size:14px; line-height:1.4; }
+</style>
+</head>
+
+<body>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
 <script>
 
-// Map centered on California
-var map = L.map('map').setView([34.05, -118.24], 5);
+// Create map
+var map = L.map('map').setView([34.05, -118.24], 6);
 
 // Base map
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: 'Map data © OpenStreetMap contributors'
+    attribution: '© OpenStreetMap'
 }).addTo(map);
 
 
-// 🔥 LOS ANGELES WILDFIRE EVENT
+// 🔥 Fire Icon
 var fireIcon = L.icon({
-    iconUrl: "https://cdn-icons-png.flaticon.com/512/482/482467.png",
-    iconSize: [30,30]
+    iconUrl: "https://cdn-icons-png.flaticon.com/512/785/785116.png",
+    iconSize: [32, 32]
 });
 
+
+// 🔥 Los Angeles Wildfire Marker
 L.marker([34.05, -118.24], {icon: fireIcon}).addTo(map)
 .bindPopup(`
-<div class="infoBox">
-<b>Los Angeles Wildfires</b><br>
-Massive fires, toxic air, evacuations.<br>
-Represents Anthropocene catastrophe.<br>
-Parallel to Gun Merchant historical fire.
-</div>
-`);
-
-
-// 🌡 EXTREME WEATHER
-L.circle([36.77, -119.41], {
-    color: 'red',
-    fillColor: '#f03',
-    fillOpacity: 0.4,
-    radius: 200000
-}).addTo(map)
-.bindPopup(`
-<div class="infoBox">
-<b>Extreme Heat & Dry Winds</b><br>
-Unstable seasons create megafire conditions.<br>
-Shows climate unpredictability.
-</div>
-`);
-
-
-// 🐾 ANIMAL MIGRATION
-var animalIcon = L.icon({
-    iconUrl: "https://cdn-icons-png.flaticon.com/512/616/616408.png",
-    iconSize: [28,28]
-});
-
-L.marker([37.77, -122.42], {icon: animalIcon}).addTo(map)
-.bindPopup(`
-<div class="infoBox">
-<b>Animal Behaviour Change</b><br>
-Species appearing in new habitats.<br>
-Multispecies ecological migration.
-</div>
-`);
-
-
-// 👤 HUMAN DISPLACEMENT
-L.marker([33.94, -118.40]).addTo(map)
-.bindPopup(`
-<div class="infoBox">
-<b>Human Impact</b><br>
-Fear, evacuation, climate vulnerability.<br>
-First World = climate migrants.
+<div class="popupText">
+<b>California Wildfires</b><br>
+Extreme heat and drought trigger large-scale fires.<br>
+Represents Anthropocene climate catastrophe<br>
+paralleling historical disasters in <i>Gun Island</i>.
 </div>
 `);
 
@@ -710,6 +691,9 @@ First World = climate migrants.
 
 </body>
 </html>
+
+
+
 
 // zoom to route
 setTimeout(function(){
